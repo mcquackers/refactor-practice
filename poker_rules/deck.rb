@@ -12,12 +12,8 @@ class Deck
     @deck.shuffle!
   end
 
-  def deal()
-   hand = []
-   HAND_SIZE.times do
-    hand.push(@deck.pop())
-   end 
-   hand
+  def deal
+    @deck.shift(HAND_SIZE)
   end
 
   def fill_deck
@@ -26,12 +22,6 @@ class Deck
         @deck.push(Card.new(value, suit))
       end
     end
+    @deck.shuffle!
   end
 end
-
-blah = Deck.new
-blah.fill_deck
-blah.shuffle
-player1 = Player.new
-player1.hand=blah.deal()
-puts(player1.hand)
