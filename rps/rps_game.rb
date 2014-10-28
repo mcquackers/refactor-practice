@@ -12,14 +12,14 @@ class RPSGame
     list_actions_to_use
     @user_choice = get_choice_from_user
     @ai_choice = get_ai_action
-    battle()
-    winner = get_winner()
+    battle
+    winner = get_winner
     name_winner(winner)
   end
 
   private
 
-  def battle()
+  def battle
     puts "USER SELECTS #{@user_choice}"
     puts "COMPUTER SELECTS #{@ai_choice}"
   end
@@ -31,7 +31,7 @@ class RPSGame
     puts "Welcome to Rock Paper Scissors!"
   end
 
-  def get_winner()
+  def get_winner
     Evaluator.new(@user_choice, @ai_choice).evaluate
   end
 
