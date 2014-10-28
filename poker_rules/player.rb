@@ -1,3 +1,4 @@
+require "./hand_evaluator"
 require "./card"
 class Player
   attr_accessor :hand
@@ -8,5 +9,9 @@ class Player
     @hand.each do |card|
       puts(card)
     end
+  end
+
+  def hand_value
+    puts(HandEvaluator.new(@hand).find_high_hand)
   end
 end

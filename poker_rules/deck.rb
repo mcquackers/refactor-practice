@@ -1,7 +1,7 @@
 require "./card"
 require "./player"
 class Deck
-  VALUES = ["2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K", "A"]
+  VALUES = ["2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14"]
   SUITS= ["♠","♣", "♥", "♦"]
   HAND_SIZE=5
   def initialize
