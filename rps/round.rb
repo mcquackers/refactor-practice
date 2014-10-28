@@ -39,6 +39,7 @@ class Round
 
   def name_winner(winner)
     puts winner
+    winner
   end
 
 
