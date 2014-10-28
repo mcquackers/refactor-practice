@@ -3,31 +3,36 @@ require "./evaluator"
 class RPSGame
   ACTIONS = %w(ROCK PAPER SCISSORS)
   def initialize
-    @ai = FairComputer.new
+    @user_choice = ""
+    @ai_choice = ""
   end
 
   def play
     show_greeting
     list_actions_to_use
-    user_choice = get_choice_from_user
-    ai_choice = @ai.throw_action
-    battle(user_choice, ai_choice)
-    winner = get_winner(user_choice, ai_choice)
+    @user_choice = get_choice_from_user
+    @ai_choice = get_ai_action
+    battle()
+    winner = get_winner()
     name_winner(winner)
   end
 
   private
 
-  def battle(user_choice, ai_choice)
-    puts "USER SELECTS #{user_choice}"
-    puts "COMPUTER SELECTS #{ai_choice}"
+  def battle()
+    puts "USER SELECTS #{@user_choice}"
+    puts "COMPUTER SELECTS #{@ai_choice}"
+  end
+
+  def get_ai_action
+    FairComputer.new.throw_action
   end
   def show_greeting
     puts "Welcome to Rock Paper Scissors!"
   end
 
-  def get_winner(user_choice, ai_choice)
-    Evaluator.new(user_choice, ai_choice).evaluate
+  def get_winner()
+    Evaluator.new(@user_choice, @ai_choice).evaluate
   end
 
   def list_actions_to_use
@@ -37,7 +42,6 @@ class RPSGame
 
   def get_choice_from_user
     choice = gets.chomp
-    puts ACTIONS[choice.to_i]
     ACTIONS[choice.to_i]
   end
 
