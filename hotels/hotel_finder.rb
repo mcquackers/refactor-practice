@@ -12,7 +12,12 @@ class HotelFinder
 
   def search(query)
     hotel = @hotel_data.fetch(query, NullHotel.new(query))
+    print_data(hotel)
+  end
 
+  private
+
+  def print_data(hotel)
     hotel.each do |key, value|
       puts "#{key}: #{value}"
     end
