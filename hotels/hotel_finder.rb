@@ -1,4 +1,5 @@
 require "./hotel_populator"
+require "./null_hotel"
 class HotelFinder
   def initialize(csv_file_name)
     populator = HotelPopulator.new(csv_file_name)
@@ -8,8 +9,11 @@ class HotelFinder
   def print_hotel_names
     puts @hotel_data.keys
   end
+
   def search(query)
-    @hotel_data[query].each do |key, value|
+    hotel = @hotel_data.fetch(query, NullHotel.new(query))
+
+    hotel.each do |key, value|
       puts "#{key}: #{value}"
     end
   end
