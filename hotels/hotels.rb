@@ -14,12 +14,7 @@ class Hotels
 
   def read_data
     CSV.foreach(@csv, {headers: true}) do |row|
-      @hotel_data[row["Hotel"]] = {
-                                  city: row["City"],
-                                  phone: row["Phone Number"],
-                                  singles: row["Number of Singles"],
-                                  doubles: row["Number of Doubles"],
-      }
+      populate_hotel_data(row)
     end
   end
 
@@ -27,6 +22,15 @@ class Hotels
     @hotel_data.each_key do |name|
       puts(name)
     end
+  end
+
+  def populate_hotel_data(row_of_data)
+     @hotel_data[row_of_data["Hotel"]] = {
+                                  city: row_of_data["City"],
+                                  phone: row_of_data["Phone Number"],
+                                  singles: row_of_data["Number of Singles"],
+                                  doubles: row_of_data["Number of Doubles"],
+      }
   end
 end
 
