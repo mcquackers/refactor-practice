@@ -4,26 +4,27 @@ require "./round"
 class RPSGame
   def initialize
     @user_wins = 0
-    @total_games = 0
+    @total_rounds = 0
   end
   def play
     show_greeting
     update_stats(Round.new.play)
-    print_stats
     ask_replay
   end
 
   private
 
   def print_stats
-    puts "You have won #{(@user_wins.to_f/@total_games)*100}% of your games"
-    puts "(#{@user_wins}/#{@total_games})"
+    puts "You have won #{(@user_wins.to_f/@total_rounds)*100}% of your games"
+    puts "(#{@user_wins}/#{@total_rounds})"
   end
-  def update_stats(win_state)
-    @total_games += 1
-    if win_state == "USER WINS"
+
+  def update_stats(result)
+    @total_rounds += 1
+    if result == "USER WINS"
         @user_wins += 1
     end
+    print_stats
   end
 
   def ask_replay

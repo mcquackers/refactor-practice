@@ -1,5 +1,5 @@
 class FairComputer
-  ACTIONS = %w(ROCK PAPER SCISSORS)
+  ACTIONS = Evaluator::LOSERS.keys
   def throw_action
     get_action(random_number)
   end
