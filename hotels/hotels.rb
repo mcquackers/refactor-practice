@@ -7,10 +7,15 @@ class Hotels
 
   def run
     read_data
-    print_data
+    print_hotel_names
+    ask_user_for_query
   end
 
   private
+
+  def print_hotel_names
+    puts @hotel_data.keys
+  end
 
   def read_data
     CSV.foreach(@csv, {headers: true}) do |row|
@@ -18,10 +23,17 @@ class Hotels
     end
   end
 
-  def print_data
-    @hotel_data.each_key do |name|
-      puts(name)
+  def print_data(hotel_name)
+    puts "Supplying data for #{hotel_name}"
+    @hotel_data[hotel_name].each do |key, value|
+      puts "#{key}: #{value}"
     end
+  end
+
+  def ask_user_for_query
+    puts "Enter the hotel name for which you which to find data"
+    query = gets.chomp
+    print_data(query)
   end
 
   def populate_hotel_data(row_of_data)
