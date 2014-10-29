@@ -1,5 +1,6 @@
 require "CSV"
 require "./hotel_finder.rb"
+require "./hotel"
 class Hotels
   def initialize(csv_file_name)
     @finder = HotelFinder.new(csv_file_name)

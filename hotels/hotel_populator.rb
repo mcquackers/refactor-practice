@@ -5,22 +5,11 @@ class HotelPopulator
 
   def read_and_populate_data
     hotel_data = {}
-    CSV.foreach(@csv_file_name, {headers: true}) do |row_of_data|
-      hotel_data[row_of_data["Hotel"]] = {
-        city: row_of_data["City"],
-        phone: row_of_data["Phone Number"],
-        singles: row_of_data["Number of Singles"],
-        doubles: row_of_data["Number of Doubles"],
-      }
+    CSV.foreach(@csv_file_name, {headers: true}) do |row|
+      # row_of_data = DataCleaner.new.standardize(row)
+      hotel = Hotel.new(row)
+      hotel_data[hotel.name] = hotel
     end
     hotel_data
-  end
-
-
-  def print_data(hotel_name)
-    puts "Supplying data for #{hotel_name}"
-    @hotel_data[hotel_name].each do |key, value|
-      puts "#{key}: #{value}"
-    end
   end
 end
