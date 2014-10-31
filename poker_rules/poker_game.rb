@@ -22,6 +22,7 @@ class PokerGame
     @players.each_with_index do |player, index|
       puts("Player #{index+1}'s hand:")
       player.show_hand
+      puts player.hand_value
     end
   end
 
