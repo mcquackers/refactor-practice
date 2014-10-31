@@ -5,4 +5,4 @@ up four players, each with a hand of 5 cards being dealt from a 52 card Deck of
 Cards.  
 
 
-this is for a test commit!
+This cool is for a test commit!
